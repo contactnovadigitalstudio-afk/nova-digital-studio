@@ -92,6 +92,7 @@
       gap: 1rem;
       padding: 1rem 0;
       position: relative;
+      flex-wrap: wrap;
     }
 
     .brand {
@@ -130,6 +131,38 @@
       color: var(--muted);
       font-weight: 500;
       font-size: 0.78rem;
+    }
+
+    .nav-controls {
+      display: flex;
+      align-items: center;
+      gap: 1rem;
+    }
+
+    .lang-selector {
+      display: flex;
+      align-items: center;
+      gap: 0.3rem;
+      background: rgba(59, 130, 246, 0.12);
+      border-radius: 30px;
+      padding: 0.2rem;
+    }
+
+    .lang-btn {
+      background: transparent;
+      border: none;
+      color: var(--muted);
+      padding: 0.4rem 1rem;
+      border-radius: 30px;
+      cursor: pointer;
+      font-weight: 600;
+      font-size: 0.9rem;
+      transition: all 0.2s;
+    }
+
+    .lang-btn.active {
+      background: var(--primary);
+      color: white;
     }
 
     .nav-links {
@@ -698,6 +731,15 @@
       .services-grid, .portfolio-gallery, .pricing-grid, .testimonials-grid, .blog-grid {
         grid-template-columns: repeat(2, minmax(0, 1fr));
       }
+
+      .nav-wrapper {
+        flex-direction: column;
+        align-items: stretch;
+      }
+
+      .nav-controls {
+        justify-content: space-between;
+      }
     }
 
     @media (max-width: 760px) {
@@ -753,22 +795,32 @@
 
   <header class="site-header">
     <div class="container nav-wrapper">
-      <a href="#home" class="brand nav-trigger" data-page="home">
-        <img src="logo.jpeg" alt="Nova Digital Studio Logo" class="nav-logo" />
-        <div>
-          Nova Digital Studio
-          <small>Design • Web Development • Social Media • Digital Education</small>
-        </div>
-      </a>
+      <div style="display: flex; align-items: center; gap: 1rem; flex-wrap: wrap;">
+        <a href="#home" class="brand nav-trigger" data-page="home">
+          <img src="logo.jpeg" alt="Nova Digital Studio Logo" class="nav-logo" />
+          <div>
+            Nova Digital Studio
+            <small class="brand-tagline">Design • Web Development • Social Media • Digital Education</small>
+          </div>
+        </a>
+      </div>
 
-      <button class="menu-toggle" id="menuToggle" aria-label="Open menu">☰</button>
+      <div class="nav-controls">
+        <!-- Language selector -->
+        <div class="lang-selector">
+          <button class="lang-btn active" data-lang="en">EN</button>
+          <button class="lang-btn" data-lang="fr">FR</button>
+        </div>
+
+        <button class="menu-toggle" id="menuToggle" aria-label="Open menu">☰</button>
+      </div>
 
       <nav>
         <ul class="nav-links" id="navLinks">
-          <li><a href="#home" class="nav-trigger active-link" data-page="home">Home</a></li>
-          <li><a href="#blog" class="nav-trigger" data-page="blog">Blog</a></li>
-          <li><a href="#about" class="nav-trigger" data-page="about">About</a></li>
-          <li><a href="#contact" class="nav-trigger" data-page="contact">Contact</a></li>
+          <li><a href="#home" class="nav-trigger active-link" data-page="home" data-i18n="nav.home">Home</a></li>
+          <li><a href="#blog" class="nav-trigger" data-page="blog" data-i18n="nav.blog">Blog</a></li>
+          <li><a href="#about" class="nav-trigger" data-page="about" data-i18n="nav.about">About</a></li>
+          <li><a href="#contact" class="nav-trigger" data-page="contact" data-i18n="nav.contact">Contact</a></li>
         </ul>
       </nav>
     </div>
@@ -779,19 +831,19 @@
       <div class="container">
         <div class="hero scroll-reveal">
           <div>
-            <div class="eyebrow">Digital Studio • Creative Tech • Education</div>
+            <div class="eyebrow" data-i18n="home.eyebrow">Digital Studio • Creative Tech • Education</div>
             <img src="logo.jpeg" alt="Nova Digital Studio Logo" class="hero-logo" />
             <h1>Nova Digital Studio</h1>
-            <h2>Helping entrepreneurs, startups and beginners grow in the digital world.</h2>
-            <p class="lead">
+            <h2 data-i18n="home.subtitle">Helping entrepreneurs, startups and beginners grow in the digital world.</h2>
+            <p class="lead" data-i18n="home.desc1">
               Nova Digital Studio accompagne les PME et entrepreneurs dans la création de visuels, sites web, applications et dans la gestion des réseaux sociaux.
             </p>
-            <p class="lead" style="margin-top: 1rem;">
+            <p class="lead" style="margin-top: 1rem;" data-i18n="home.desc2">
               In addition, we share educational content about Python, artificial intelligence, design, digital marketing and SEO to help beginners learn step by step.
             </p>
             <div class="cta-group">
-              <a href="#blog" class="btn btn-primary nav-trigger" data-page="blog">Explore Blog</a>
-              <a href="#contact" class="btn btn-secondary nav-trigger" data-page="contact">Contact Us</a>
+              <a href="#blog" class="btn btn-primary nav-trigger" data-page="blog" data-i18n="home.exploreBlog">Explore Blog</a>
+              <a href="#contact" class="btn btn-secondary nav-trigger" data-page="contact" data-i18n="home.contactUs">Contact Us</a>
             </div>
           </div>
 
@@ -799,29 +851,29 @@
             <div class="dashboard">
               <div class="dashboard-top">
                 <div class="mini-panel">
-                  <h4>Creative Services</h4>
-                  <p class="section-intro">Design, web, apps, social media & branding</p>
+                  <h4 data-i18n="home.mini1Title">Creative Services</h4>
+                  <p class="section-intro" data-i18n="home.mini1Text">Design, web, apps, social media & branding</p>
                 </div>
                 <div class="mini-panel">
-                  <h4>Digital Education</h4>
-                  <p class="section-intro">Python, AI, marketing, SEO – beginner friendly</p>
+                  <h4 data-i18n="home.mini2Title">Digital Education</h4>
+                  <p class="section-intro" data-i18n="home.mini2Text">Python, AI, marketing, SEO – beginner friendly</p>
                 </div>
               </div>
               <div class="dashboard-grid">
                 <div class="mini-panel">
-                  <h4>Studio Snapshot</h4>
+                  <h4 data-i18n="home.snapshotTitle">Studio Snapshot</h4>
                   <div class="stats">
-                    <div class="stat"><strong>6</strong><span>Core Services</span></div>
-                    <div class="stat"><strong>5+</strong><span>Learning Topics</span></div>
-                    <div class="stat"><strong>Soon</strong><span>AI Series Launch</span></div>
+                    <div class="stat"><strong>6</strong><span data-i18n="home.coreServices">Core Services</span></div>
+                    <div class="stat"><strong>5+</strong><span data-i18n="home.learningTopics">Learning Topics</span></div>
+                    <div class="stat"><strong data-i18n="home.soon">Soon</strong><span data-i18n="home.aiSeries">AI Series Launch</span></div>
                   </div>
                 </div>
                 <div class="mini-panel">
-                  <h4>Focus Areas</h4>
+                  <h4 data-i18n="home.focusTitle">Focus Areas</h4>
                   <ul class="bullet-list" style="margin-top:0.5rem;">
-                    <li><span></span>Modern websites & apps</li>
-                    <li><span></span>Social media growth</li>
-                    <li><span></span>Beginner-friendly learning</li>
+                    <li><span></span><span data-i18n="home.focus1">Modern websites & apps</span></li>
+                    <li><span></span><span data-i18n="home.focus2">Social media growth</span></li>
+                    <li><span></span><span data-i18n="home.focus3">Beginner-friendly learning</span></li>
                   </ul>
                 </div>
               </div>
@@ -833,12 +885,12 @@
           <div class="logo-showcase scroll-reveal">
             <div>
               <div class="section-header">
-                <h2>Our Brand Logo</h2>
-                <p class="section-intro">
+                <h2 data-i18n="home.logoTitle">Our Brand Logo</h2>
+                <p class="section-intro" data-i18n="home.logoDesc">
                   A clean visual identity designed to reflect innovation, simplicity and digital creativity.
                 </p>
               </div>
-              <p class="lead">
+              <p class="lead" data-i18n="home.logoText">
                 This is your official brand logo integrated directly into the website.
               </p>
             </div>
@@ -850,38 +902,38 @@
 
         <div class="section">
           <div class="section-header">
-            <h2>Our Services</h2>
-            <p class="section-intro">Creative and technical solutions tailored for entrepreneurs, startups and growing businesses.</p>
+            <h2 data-i18n="services.title">Our Services</h2>
+            <p class="section-intro" data-i18n="services.subtitle">Creative and technical solutions tailored for entrepreneurs, startups and growing businesses.</p>
           </div>
           <div class="grid services-grid scroll-reveal">
-            <div class="card"><div class="icon"><i class="fas fa-paint-brush"></i></div><h3>Graphic Design</h3><p>Clean and impactful visual design for businesses and campaigns.</p></div>
-            <div class="card"><div class="icon"><i class="fas fa-code"></i></div><h3>Web Development</h3><p>Modern responsive websites built for performance and usability.</p></div>
-            <div class="card"><div class="icon"><i class="fas fa-mobile-alt"></i></div><h3>Mobile App Development</h3><p>User-focused mobile experiences that connect with customers.</p></div>
-            <div class="card"><div class="icon"><i class="fas fa-hashtag"></i></div><h3>Social Media Management</h3><p>Strategic planning, content support and community growth.</p></div>
-            <div class="card"><div class="icon"><i class="fas fa-video"></i></div><h3>Digital Content Creation</h3><p>Educational and marketing content designed to engage.</p></div>
-            <div class="card"><div class="icon"><i class="fas fa-tag"></i></div><h3>Branding Support</h3><p>Visual identity and brand direction for a professional look.</p></div>
+            <div class="card"><div class="icon"><i class="fas fa-paint-brush"></i></div><h3 data-i18n="services.graphic">Graphic Design</h3><p data-i18n="services.graphicDesc">Clean and impactful visual design for businesses and campaigns.</p></div>
+            <div class="card"><div class="icon"><i class="fas fa-code"></i></div><h3 data-i18n="services.web">Web Development</h3><p data-i18n="services.webDesc">Modern responsive websites built for performance and usability.</p></div>
+            <div class="card"><div class="icon"><i class="fas fa-mobile-alt"></i></div><h3 data-i18n="services.mobile">Mobile App Development</h3><p data-i18n="services.mobileDesc">User-focused mobile experiences that connect with customers.</p></div>
+            <div class="card"><div class="icon"><i class="fas fa-hashtag"></i></div><h3 data-i18n="services.social">Social Media Management</h3><p data-i18n="services.socialDesc">Strategic planning, content support and community growth.</p></div>
+            <div class="card"><div class="icon"><i class="fas fa-video"></i></div><h3 data-i18n="services.content">Digital Content Creation</h3><p data-i18n="services.contentDesc">Educational and marketing content designed to engage.</p></div>
+            <div class="card"><div class="icon"><i class="fas fa-tag"></i></div><h3 data-i18n="services.branding">Branding Support</h3><p data-i18n="services.brandingDesc">Visual identity and brand direction for a professional look.</p></div>
           </div>
         </div>
 
         <div class="section">
           <div class="section-header">
-            <h2>What We Share</h2>
-            <p class="section-intro">We share simple and useful educational content to help beginners build confidence in technology and digital skills.</p>
+            <h2 data-i18n="edu.title">What We Share</h2>
+            <p class="section-intro" data-i18n="edu.subtitle">We share simple and useful educational content to help beginners build confidence in technology and digital skills.</p>
           </div>
           <div class="grid services-grid scroll-reveal">
-            <div class="card"><div class="icon"><i class="fab fa-python"></i></div><h3>Python for Beginners</h3><p>Friendly introductions to coding fundamentals.</p></div>
-            <div class="card"><div class="icon"><i class="fas fa-file-alt"></i></div><h3>Mini Learning Guides</h3><p>Clear educational resources structured for easy learning.</p></div>
-            <div class="card"><div class="icon"><i class="fas fa-robot"></i></div><h3>AI for Beginners</h3><p>Simple explanations of AI concepts and tools.</p></div>
-            <div class="card"><div class="icon"><i class="fas fa-chart-line"></i></div><h3>Digital Marketing Tips</h3><p>Practical advice for content strategy and audience growth.</p></div>
-            <div class="card"><div class="icon"><i class="fas fa-search"></i></div><h3>SEO & Online Growth</h3><p>Beginner-friendly strategies to improve visibility.</p></div>
-            <div class="card"><div class="icon"><i class="fas fa-rocket"></i></div><h3>AI Series Starting Soon</h3><p>New educational series about AI for beginners – step by step.</p></div>
+            <div class="card"><div class="icon"><i class="fab fa-python"></i></div><h3 data-i18n="edu.python">Python for Beginners</h3><p data-i18n="edu.pythonDesc">Friendly introductions to coding fundamentals.</p></div>
+            <div class="card"><div class="icon"><i class="fas fa-file-alt"></i></div><h3 data-i18n="edu.guides">Mini Learning Guides</h3><p data-i18n="edu.guidesDesc">Clear educational resources structured for easy learning.</p></div>
+            <div class="card"><div class="icon"><i class="fas fa-robot"></i></div><h3 data-i18n="edu.ai">AI for Beginners</h3><p data-i18n="edu.aiDesc">Simple explanations of AI concepts and tools.</p></div>
+            <div class="card"><div class="icon"><i class="fas fa-chart-line"></i></div><h3 data-i18n="edu.marketing">Digital Marketing Tips</h3><p data-i18n="edu.marketingDesc">Practical advice for content strategy and audience growth.</p></div>
+            <div class="card"><div class="icon"><i class="fas fa-search"></i></div><h3 data-i18n="edu.seo">SEO & Online Growth</h3><p data-i18n="edu.seoDesc">Beginner-friendly strategies to improve visibility.</p></div>
+            <div class="card"><div class="icon"><i class="fas fa-rocket"></i></div><h3 data-i18n="edu.aiSeries">AI Series Starting Soon</h3><p data-i18n="edu.aiSeriesDesc">New educational series about AI for beginners – step by step.</p></div>
           </div>
         </div>
 
         <div class="section">
           <div class="section-header">
-            <h2>Recent Projects</h2>
-            <p class="section-intro">A selection of work representing the quality and creativity of Nova Digital Studio.</p>
+            <h2 data-i18n="portfolio.title">Recent Projects</h2>
+            <p class="section-intro" data-i18n="portfolio.subtitle">A selection of work representing the quality and creativity of Nova Digital Studio.</p>
           </div>
           <div class="grid portfolio-gallery scroll-reveal">
             <div class="gallery-item" data-title="Fintech Dashboard (Web Dev)" style="background-image: linear-gradient(rgba(4,11,22,0.18), rgba(4,11,22,0.35)), url('https://images.unsplash.com/photo-1460925895917-afdab827c52f?auto=format&fit=crop&w=900&q=80');"></div>
@@ -895,57 +947,57 @@
 
         <div class="section">
           <div class="section-header">
-            <h2>Flexible Packages</h2>
-            <p class="section-intro">Choose the plan that fits your project needs.</p>
+            <h2 data-i18n="pricing.title">Flexible Packages</h2>
+            <p class="section-intro" data-i18n="pricing.subtitle">Choose the plan that fits your project needs (prix en dinars tunisiens).</p>
           </div>
           <div class="grid pricing-grid scroll-reveal">
             <div class="pricing-card">
-              <h3>Essentials</h3>
-              <div class="price">€1,499</div>
+              <h3 data-i18n="pricing.essentials">Essentials</h3>
+              <div class="price">5 000 DT</div>
               <ul class="price-features">
-                <li><i class="fas fa-check-circle"></i> Brand identity & logo</li>
-                <li><i class="fas fa-check-circle"></i> 5-page website</li>
-                <li><i class="fas fa-check-circle"></i> Social media setup</li>
-                <li><i class="fas fa-check-circle"></i> 1 month support</li>
+                <li><i class="fas fa-check-circle"></i> <span data-i18n="pricing.essentials1">Brand identity & logo</span></li>
+                <li><i class="fas fa-check-circle"></i> <span data-i18n="pricing.essentials2">5-page website</span></li>
+                <li><i class="fas fa-check-circle"></i> <span data-i18n="pricing.essentials3">Social media setup</span></li>
+                <li><i class="fas fa-check-circle"></i> <span data-i18n="pricing.essentials4">1 month support</span></li>
               </ul>
-              <a href="#contact" class="btn btn-secondary nav-trigger" data-page="contact">Get Started</a>
+              <a href="#contact" class="btn btn-secondary nav-trigger" data-page="contact" data-i18n="pricing.getStarted">Get Started</a>
             </div>
 
             <div class="pricing-card" style="border-color: var(--primary); transform: scale(1.02);">
-              <h3>Growth <span style="color:var(--primary); font-size:0.8rem;">popular</span></h3>
-              <div class="price">€3,999</div>
+              <h3>Growth <span style="color:var(--primary); font-size:0.8rem;" data-i18n="pricing.popular">popular</span></h3>
+              <div class="price">13 000 DT</div>
               <ul class="price-features">
-                <li><i class="fas fa-check-circle"></i> Everything in Essentials</li>
-                <li><i class="fas fa-check-circle"></i> Web app development</li>
-                <li><i class="fas fa-check-circle"></i> SEO optimization</li>
-                <li><i class="fas fa-check-circle"></i> 3 months support</li>
+                <li><i class="fas fa-check-circle"></i> <span data-i18n="pricing.growth1">Everything in Essentials</span></li>
+                <li><i class="fas fa-check-circle"></i> <span data-i18n="pricing.growth2">Web app development</span></li>
+                <li><i class="fas fa-check-circle"></i> <span data-i18n="pricing.growth3">SEO optimization</span></li>
+                <li><i class="fas fa-check-circle"></i> <span data-i18n="pricing.growth4">3 months support</span></li>
               </ul>
-              <a href="#contact" class="btn btn-primary nav-trigger" data-page="contact">Choose Growth</a>
+              <a href="#contact" class="btn btn-primary nav-trigger" data-page="contact" data-i18n="pricing.chooseGrowth">Choose Growth</a>
             </div>
 
             <div class="pricing-card">
-              <h3>Enterprise</h3>
-              <div class="price">Custom</div>
+              <h3 data-i18n="pricing.enterprise">Enterprise</h3>
+              <div class="price" data-i18n="pricing.custom">Sur devis</div>
               <ul class="price-features">
-                <li><i class="fas fa-check-circle"></i> Tailored solutions</li>
-                <li><i class="fas fa-check-circle"></i> Dedicated team</li>
-                <li><i class="fas fa-check-circle"></i> Advanced AI integration</li>
-                <li><i class="fas fa-check-circle"></i> Ongoing strategy</li>
+                <li><i class="fas fa-check-circle"></i> <span data-i18n="pricing.enterprise1">Tailored solutions</span></li>
+                <li><i class="fas fa-check-circle"></i> <span data-i18n="pricing.enterprise2">Dedicated team</span></li>
+                <li><i class="fas fa-check-circle"></i> <span data-i18n="pricing.enterprise3">Advanced AI integration</span></li>
+                <li><i class="fas fa-check-circle"></i> <span data-i18n="pricing.enterprise4">Ongoing strategy</span></li>
               </ul>
-              <a href="#contact" class="btn btn-secondary nav-trigger" data-page="contact">Contact us</a>
+              <a href="#contact" class="btn btn-secondary nav-trigger" data-page="contact" data-i18n="pricing.contactUs">Contact us</a>
             </div>
           </div>
         </div>
 
         <div class="section">
           <div class="section-header">
-            <h2>Client Stories</h2>
-            <p class="section-intro">What people say about working with Nova Digital Studio.</p>
+            <h2 data-i18n="testimonials.title">Client Stories</h2>
+            <p class="section-intro" data-i18n="testimonials.subtitle">What people say about working with Nova Digital Studio.</p>
           </div>
           <div class="grid testimonials-grid scroll-reveal">
             <div class="testimonial-item">
               <div class="quote-icon"><i class="fas fa-quote-right"></i></div>
-              <p class="testimonial-text">“Nova transformed our online presence. Their mix of design and technical SEO is unmatched.”</p>
+              <p class="testimonial-text" data-i18n="testimonials.1">“Nova transformed our online presence. Their mix of design and technical SEO is unmatched.”</p>
               <div class="client-info">
                 <img src="https://i.pravatar.cc/150?u=1" alt="client">
                 <div><h4>Sarah Jenkins</h4><p>CEO, TechFlow</p></div>
@@ -953,7 +1005,7 @@
             </div>
             <div class="testimonial-item">
               <div class="quote-icon"><i class="fas fa-quote-right"></i></div>
-              <p class="testimonial-text">“The Python tutorials helped our marketing team automate internal reports. Great educational content.”</p>
+              <p class="testimonial-text" data-i18n="testimonials.2">“The Python tutorials helped our marketing team automate internal reports. Great educational content.”</p>
               <div class="client-info">
                 <img src="https://i.pravatar.cc/150?u=2" alt="client">
                 <div><h4>Marc Dupont</h4><p>Founder, EduScale</p></div>
@@ -961,7 +1013,7 @@
             </div>
             <div class="testimonial-item">
               <div class="quote-icon"><i class="fas fa-quote-right"></i></div>
-              <p class="testimonial-text">“We partnered for social media management; engagement doubled in three months. Highly professional.”</p>
+              <p class="testimonial-text" data-i18n="testimonials.3">“We partnered for social media management; engagement doubled in three months. Highly professional.”</p>
               <div class="client-info">
                 <img src="https://i.pravatar.cc/150?u=3" alt="client">
                 <div><h4>Carlos Mendez</h4><p>Urban Store</p></div>
@@ -972,13 +1024,13 @@
 
         <div class="section">
           <div class="card" style="padding:2rem; text-align:center;">
-            <h2 style="margin-bottom:0.8rem;">Let's work together to build your digital presence.</h2>
-            <p class="section-intro" style="max-width:700px; margin:0 auto 1.5rem;">
+            <h2 style="margin-bottom:0.8rem;" data-i18n="cta.title">Let's work together to build your digital presence.</h2>
+            <p class="section-intro" style="max-width:700px; margin:0 auto 1.5rem;" data-i18n="cta.subtitle">
               Contact Nova Digital Studio for design, web development, applications or social media services.
             </p>
             <div class="cta-group" style="justify-content:center;">
-              <a href="#contact" class="btn btn-primary nav-trigger" data-page="contact">Start a Project</a>
-              <a href="#contact" class="btn btn-secondary nav-trigger" data-page="contact">Contact Nova</a>
+              <a href="#contact" class="btn btn-primary nav-trigger" data-page="contact" data-i18n="cta.startProject">Start a Project</a>
+              <a href="#contact" class="btn btn-secondary nav-trigger" data-page="contact" data-i18n="cta.contact">Contact Nova</a>
             </div>
           </div>
         </div>
@@ -988,50 +1040,50 @@
     <section id="blog" class="page">
       <div class="container">
         <div class="section-header">
-          <div class="eyebrow">Educational Articles</div>
-          <h2>Nova Digital Studio Blog</h2>
-          <p class="section-intro">The blog shares useful articles about technology, design, programming, artificial intelligence and digital marketing.</p>
+          <div class="eyebrow" data-i18n="blog.eyebrow">Educational Articles</div>
+          <h2 data-i18n="blog.title">Nova Digital Studio Blog</h2>
+          <p class="section-intro" data-i18n="blog.subtitle">The blog shares useful articles about technology, design, programming, artificial intelligence and digital marketing.</p>
         </div>
 
         <div class="grid blog-grid scroll-reveal">
           <article class="blog-card">
             <div class="blog-image" style="background-image: linear-gradient(rgba(4,11,22,0.2), rgba(4,11,22,0.35)), url('https://images.unsplash.com/photo-1677442136019-21780ecad995?auto=format&fit=crop&w=900&q=80');"></div>
-            <span class="blog-tag">Artificial Intelligence</span>
-            <h3>What is Artificial Intelligence?</h3>
-            <p>Discover the basics of AI, how it works and why it matters.</p>
-            <a href="#" class="btn btn-secondary" style="margin-top:0.5rem;">Read More</a>
+            <span class="blog-tag" data-i18n="blog.tagAI">Artificial Intelligence</span>
+            <h3 data-i18n="blog.post1Title">What is Artificial Intelligence?</h3>
+            <p data-i18n="blog.post1Desc">Discover the basics of AI, how it works and why it matters.</p>
+            <a href="#" class="btn btn-secondary" style="margin-top:0.5rem;" data-i18n="blog.readMore">Read More</a>
           </article>
 
           <article class="blog-card">
             <div class="blog-image" style="background-image: linear-gradient(rgba(4,11,22,0.2), rgba(4,11,22,0.35)), url('https://images.unsplash.com/photo-1526379095098-d400fd0bf935?auto=format&fit=crop&w=900&q=80');"></div>
-            <span class="blog-tag">Programming</span>
-            <h3>Python for Beginners</h3>
-            <p>Start learning Python with simple concepts and examples.</p>
-            <a href="#" class="btn btn-secondary" style="margin-top:0.5rem;">Read More</a>
+            <span class="blog-tag" data-i18n="blog.tagPython">Programming</span>
+            <h3 data-i18n="blog.post2Title">Python for Beginners</h3>
+            <p data-i18n="blog.post2Desc">Start learning Python with simple concepts and examples.</p>
+            <a href="#" class="btn btn-secondary" style="margin-top:0.5rem;" data-i18n="blog.readMore">Read More</a>
           </article>
 
           <article class="blog-card">
             <div class="blog-image" style="background-image: linear-gradient(rgba(4,11,22,0.2), rgba(4,11,22,0.35)), url('https://images.unsplash.com/photo-1674027444485-cec3da58eef4?auto=format&fit=crop&w=900&q=80');"></div>
-            <span class="blog-tag">Tools</span>
-            <h3>Best AI Tools for Students</h3>
-            <p>Free AI tools that boost productivity and learning.</p>
-            <a href="#" class="btn btn-secondary" style="margin-top:0.5rem;">Read More</a>
+            <span class="blog-tag" data-i18n="blog.tagTools">Tools</span>
+            <h3 data-i18n="blog.post3Title">Best AI Tools for Students</h3>
+            <p data-i18n="blog.post3Desc">Free AI tools that boost productivity and learning.</p>
+            <a href="#" class="btn btn-secondary" style="margin-top:0.5rem;" data-i18n="blog.readMore">Read More</a>
           </article>
 
           <article class="blog-card">
             <div class="blog-image" style="background-image: linear-gradient(rgba(4,11,22,0.2), rgba(4,11,22,0.35)), url('https://images.unsplash.com/photo-1460925895917-afdab827c52f?auto=format&fit=crop&w=900&q=80');"></div>
-            <span class="blog-tag">Marketing</span>
-            <h3>Introduction to Digital Marketing</h3>
-            <p>Learn the foundation of digital marketing and audience growth.</p>
-            <a href="#" class="btn btn-secondary" style="margin-top:0.5rem;">Read More</a>
+            <span class="blog-tag" data-i18n="blog.tagMarketing">Marketing</span>
+            <h3 data-i18n="blog.post4Title">Introduction to Digital Marketing</h3>
+            <p data-i18n="blog.post4Desc">Learn the foundation of digital marketing and audience growth.</p>
+            <a href="#" class="btn btn-secondary" style="margin-top:0.5rem;" data-i18n="blog.readMore">Read More</a>
           </article>
 
           <article class="blog-card">
             <div class="blog-image" style="background-image: linear-gradient(rgba(4,11,22,0.2), rgba(4,11,22,0.35)), url('https://images.unsplash.com/photo-1562577309-4932fdd64cd1?auto=format&fit=crop&w=900&q=80');"></div>
-            <span class="blog-tag">SEO</span>
-            <h3>SEO Basics</h3>
-            <p>Understand how search engines work and improve visibility.</p>
-            <a href="#" class="btn btn-secondary" style="margin-top:0.5rem;">Read More</a>
+            <span class="blog-tag" data-i18n="blog.tagSEO">SEO</span>
+            <h3 data-i18n="blog.post5Title">SEO Basics</h3>
+            <p data-i18n="blog.post5Desc">Understand how search engines work and improve visibility.</p>
+            <a href="#" class="btn btn-secondary" style="margin-top:0.5rem;" data-i18n="blog.readMore">Read More</a>
           </article>
         </div>
       </div>
@@ -1040,20 +1092,20 @@
     <section id="about" class="page">
       <div class="container">
         <div class="section-header">
-          <div class="eyebrow">About The Brand</div>
-          <h2>About Nova Digital Studio</h2>
+          <div class="eyebrow" data-i18n="about.eyebrow">About The Brand</div>
+          <h2 data-i18n="about.title">About Nova Digital Studio</h2>
         </div>
 
         <div class="about-layout scroll-reveal">
           <div class="about-copy">
-            <div class="card"><p>Nova Digital Studio is a digital brand focused on helping entrepreneurs and beginners understand and use digital technologies.</p></div>
-            <div class="card"><p>We combine digital services and educational content to make technology easier to learn and use.</p></div>
-            <div class="card"><h3>Why Nova?</h3><p>We believe digital transformation should be accessible, practical and creative. Our goal is to support both businesses and learners with clear solutions.</p></div>
+            <div class="card"><p data-i18n="about.p1">Nova Digital Studio is a digital brand focused on helping entrepreneurs and beginners understand and use digital technologies.</p></div>
+            <div class="card"><p data-i18n="about.p2">We combine digital services and educational content to make technology easier to learn and use.</p></div>
+            <div class="card"><h3 data-i18n="about.whyTitle">Why Nova?</h3><p data-i18n="about.whyText">We believe digital transformation should be accessible, practical and creative. Our goal is to support both businesses and learners with clear solutions.</p></div>
           </div>
           <div class="mission-vision">
-            <div><h3>Mission</h3><p class="section-intro">Make digital knowledge accessible and help businesses grow online.</p></div>
-            <div><h3>Vision</h3><p class="section-intro">Build a strong digital brand that combines services, education and innovation.</p></div>
-            <div class="notice">Nova Digital Studio: services + education for the digital age.</div>
+            <div><h3 data-i18n="about.mission">Mission</h3><p class="section-intro" data-i18n="about.missionText">Make digital knowledge accessible and help businesses grow online.</p></div>
+            <div><h3 data-i18n="about.vision">Vision</h3><p class="section-intro" data-i18n="about.visionText">Build a strong digital brand that combines services, education and innovation.</p></div>
+            <div class="notice" data-i18n="about.notice">Nova Digital Studio: services + education for the digital age.</div>
           </div>
         </div>
       </div>
@@ -1062,56 +1114,57 @@
     <section id="contact" class="page">
       <div class="container">
         <div class="section-header">
-          <div class="eyebrow">Let's Collaborate</div>
-          <h2>Work With Us</h2>
-          <p class="section-intro">If you need help with design, web development, applications or social media management, Nova Digital Studio is ready to help.</p>
+          <div class="eyebrow" data-i18n="contact.eyebrow">Let's Collaborate</div>
+          <h2 data-i18n="contact.title">Work With Us</h2>
+          <p class="section-intro" data-i18n="contact.subtitle">If you need help with design, web development, applications or social media management, Nova Digital Studio is ready to help.</p>
         </div>
 
         <div class="contact-layout scroll-reveal">
           <div class="contact-form">
-            <h3 style="margin-bottom:1rem;">Project Inquiry</h3>
-            <form id="contactForm">
-              <div class="form-group"><label>Full name</label><input type="text" placeholder="Your name" required /></div>
-              <div class="form-group"><label>Email</label><input type="email" placeholder="you@example.com" required /></div>
+            <h3 style="margin-bottom:1rem;" data-i18n="contact.formTitle">Project Inquiry</h3>
+            <!-- Formulaire fonctionnel avec Formspree - remplace l'email par ton adresse -->
+            <form action="https://formspree.io/f/ton-email@example.com" method="POST">
+              <div class="form-group"><label data-i18n="contact.name">Full name</label><input type="text" name="name" placeholder="Your name" required /></div>
+              <div class="form-group"><label data-i18n="contact.email">Email</label><input type="email" name="email" placeholder="you@example.com" required /></div>
 
               <div class="form-row" style="display:grid; grid-template-columns:1fr 1fr; gap:1rem;">
                 <div class="form-group">
-                  <label>Service needed</label>
-                  <select required>
-                    <option value="" disabled selected>Select</option>
-                    <option>Web Development</option>
-                    <option>Graphic Design</option>
-                    <option>Social Media</option>
-                    <option>Mobile App</option>
-                    <option>Other</option>
+                  <label data-i18n="contact.service">Service needed</label>
+                  <select name="service" required>
+                    <option value="" disabled selected data-i18n="contact.select">Select</option>
+                    <option data-i18n="contact.web">Web Development</option>
+                    <option data-i18n="contact.graphic">Graphic Design</option>
+                    <option data-i18n="contact.social">Social Media</option>
+                    <option data-i18n="contact.mobile">Mobile App</option>
+                    <option data-i18n="contact.other">Other</option>
                   </select>
                 </div>
                 <div class="form-group">
-                  <label>Budget range</label>
-                  <select required>
-                    <option value="" disabled selected>Select</option>
-                    <option>Less than €2k</option>
-                    <option>€2k – €5k</option>
-                    <option>€5k – €10k</option>
-                    <option>€10k+</option>
+                  <label data-i18n="contact.budget">Budget range</label>
+                  <select name="budget" required>
+                    <option value="" disabled selected data-i18n="contact.select">Select</option>
+                    <option data-i18n="contact.budget1">Less than €2k</option>
+                    <option data-i18n="contact.budget2">€2k – €5k</option>
+                    <option data-i18n="contact.budget3">€5k – €10k</option>
+                    <option data-i18n="contact.budget4">€10k+</option>
                   </select>
                 </div>
               </div>
 
-              <div class="form-group"><label>Message</label><textarea placeholder="Tell us about your project..." required></textarea></div>
-              <button type="submit" class="btn btn-primary">Submit inquiry</button>
-              <div class="notice" id="formNotice" style="display:none; margin-top:1rem;">Thank you! We'll get back to you within 24h.</div>
+              <div class="form-group"><label data-i18n="contact.message">Message</label><textarea name="message" placeholder="Tell us about your project..." required></textarea></div>
+              <button type="submit" class="btn btn-primary" data-i18n="contact.submit">Submit inquiry</button>
+              <div class="notice" style="margin-top:1rem;" data-i18n="contact.notice">Nous vous répondrons sous 24h.</div>
             </form>
           </div>
 
           <div class="info-stack">
-            <div class="info-card"><h3>Contact us to collaborate</h3><p>Contact us to collaborate, build projects together, or grow your digital presence.</p></div>
-            <div class="info-card"><h3>Email Contact</h3><p class="section-intro">contact@novadigitalstudio.com</p></div>
+            <div class="info-card"><h3 data-i18n="contact.collabTitle">Contact us to collaborate</h3><p data-i18n="contact.collabText">Contact us to collaborate, build projects together, or grow your digital presence.</p></div>
+            <div class="info-card"><h3 data-i18n="contact.emailTitle">Email Contact</h3><p class="section-intro">contact@novadigitalstudio.com</p></div>
             <div class="info-card">
-              <h3>Social Media Links</h3>
-              <p class="section-intro">Follow Nova Digital Studio.</p>
+              <h3 data-i18n="contact.socialTitle">Social Media Links</h3>
+              <p class="section-intro" data-i18n="contact.socialText">Follow Nova Digital Studio.</p>
               <div class="socials">
-                <a href="#" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
+                <a href="https://www.instagram.com/contact.novadigitalstudio/" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
                 <a href="#" aria-label="LinkedIn"><i class="fab fa-linkedin"></i></a>
                 <a href="#" aria-label="Twitter"><i class="fab fa-x-twitter"></i></a>
                 <a href="#" aria-label="GitHub"><i class="fab fa-github"></i></a>
@@ -1129,21 +1182,21 @@
         <div>
           <img src="logo.jpeg" alt="Nova Digital Studio Logo" class="nav-logo" style="margin-bottom:0.5rem;" />
           <h4>Nova Digital Studio</h4>
-          <p class="footer-text">Design • Web Development • Social Media • Digital Education</p>
+          <p class="footer-text" data-i18n="footer.tagline">Design • Web Development • Social Media • Digital Education</p>
         </div>
 
         <div>
-          <h4>Quick Links</h4>
+          <h4 data-i18n="footer.quickLinks">Quick Links</h4>
           <ul class="footer-links">
-            <li><a href="#home" class="nav-trigger" data-page="home">Home</a></li>
-            <li><a href="#blog" class="nav-trigger" data-page="blog">Blog</a></li>
-            <li><a href="#about" class="nav-trigger" data-page="about">About</a></li>
-            <li><a href="#contact" class="nav-trigger" data-page="contact">Contact</a></li>
+            <li><a href="#home" class="nav-trigger" data-page="home" data-i18n="nav.home">Home</a></li>
+            <li><a href="#blog" class="nav-trigger" data-page="blog" data-i18n="nav.blog">Blog</a></li>
+            <li><a href="#about" class="nav-trigger" data-page="about" data-i18n="nav.about">About</a></li>
+            <li><a href="#contact" class="nav-trigger" data-page="contact" data-i18n="nav.contact">Contact</a></li>
           </ul>
         </div>
 
         <div>
-          <h4>Connect</h4>
+          <h4 data-i18n="footer.connect">Connect</h4>
           <div class="footer-socials">
             <a href="https://www.instagram.com/contact.novadigitalstudio/" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
             <a href="#" aria-label="LinkedIn"><i class="fab fa-linkedin"></i></a>
@@ -1152,13 +1205,397 @@
         </div>
       </div>
 
-      <div class="copyright">© <span id="year"></span> Nova Digital Studio. All rights reserved.</div>
+      <div class="copyright">© <span id="year"></span> Nova Digital Studio. <span data-i18n="footer.rights">All rights reserved.</span></div>
     </div>
   </footer>
 
   <a class="whatsapp-float" href="https://wa.me/0000000000" target="_blank" rel="noopener" aria-label="Contact on WhatsApp">✆</a>
 
   <script>
+    // Translations
+    const translations = {
+      en: {
+        nav: { home: "Home", blog: "Blog", about: "About", contact: "Contact" },
+        home: {
+          eyebrow: "Digital Studio • Creative Tech • Education",
+          subtitle: "Helping entrepreneurs, startups and beginners grow in the digital world.",
+          desc1: "Nova Digital Studio helps SMEs and entrepreneurs create visuals, websites, apps and manage social media.",
+          desc2: "In addition, we share educational content about Python, artificial intelligence, design, digital marketing and SEO to help beginners learn step by step.",
+          exploreBlog: "Explore Blog",
+          contactUs: "Contact Us",
+          mini1Title: "Creative Services",
+          mini1Text: "Design, web, apps, social media & branding",
+          mini2Title: "Digital Education",
+          mini2Text: "Python, AI, marketing, SEO – beginner friendly",
+          snapshotTitle: "Studio Snapshot",
+          coreServices: "Core Services",
+          learningTopics: "Learning Topics",
+          soon: "Soon",
+          aiSeries: "AI Series Launch",
+          focusTitle: "Focus Areas",
+          focus1: "Modern websites & apps",
+          focus2: "Social media growth",
+          focus3: "Beginner-friendly learning",
+          logoTitle: "Our Brand Logo",
+          logoDesc: "A clean visual identity designed to reflect innovation, simplicity and digital creativity.",
+          logoText: "This is your official brand logo integrated directly into the website."
+        },
+        services: {
+          title: "Our Services",
+          subtitle: "Creative and technical solutions tailored for entrepreneurs, startups and growing businesses.",
+          graphic: "Graphic Design",
+          graphicDesc: "Clean and impactful visual design for businesses and campaigns.",
+          web: "Web Development",
+          webDesc: "Modern responsive websites built for performance and usability.",
+          mobile: "Mobile App Development",
+          mobileDesc: "User-focused mobile experiences that connect with customers.",
+          social: "Social Media Management",
+          socialDesc: "Strategic planning, content support and community growth.",
+          content: "Digital Content Creation",
+          contentDesc: "Educational and marketing content designed to engage.",
+          branding: "Branding Support",
+          brandingDesc: "Visual identity and brand direction for a professional look."
+        },
+        edu: {
+          title: "What We Share",
+          subtitle: "We share simple and useful educational content to help beginners build confidence in technology and digital skills.",
+          python: "Python for Beginners",
+          pythonDesc: "Friendly introductions to coding fundamentals.",
+          guides: "Mini Learning Guides",
+          guidesDesc: "Clear educational resources structured for easy learning.",
+          ai: "AI for Beginners",
+          aiDesc: "Simple explanations of AI concepts and tools.",
+          marketing: "Digital Marketing Tips",
+          marketingDesc: "Practical advice for content strategy and audience growth.",
+          seo: "SEO & Online Growth",
+          seoDesc: "Beginner-friendly strategies to improve visibility.",
+          aiSeries: "AI Series Starting Soon",
+          aiSeriesDesc: "New educational series about AI for beginners – step by step."
+        },
+        portfolio: {
+          title: "Recent Projects",
+          subtitle: "A selection of work representing the quality and creativity of Nova Digital Studio."
+        },
+        pricing: {
+          title: "Flexible Packages",
+          subtitle: "Choose the plan that fits your project needs (prices in Tunisian Dinars).",
+          essentials: "Essentials",
+          essentials1: "Brand identity & logo",
+          essentials2: "5-page website",
+          essentials3: "Social media setup",
+          essentials4: "1 month support",
+          getStarted: "Get Started",
+          popular: "popular",
+          growth1: "Everything in Essentials",
+          growth2: "Web app development",
+          growth3: "SEO optimization",
+          growth4: "3 months support",
+          chooseGrowth: "Choose Growth",
+          enterprise: "Enterprise",
+          custom: "Custom",
+          enterprise1: "Tailored solutions",
+          enterprise2: "Dedicated team",
+          enterprise3: "Advanced AI integration",
+          enterprise4: "Ongoing strategy",
+          contactUs: "Contact us"
+        },
+        testimonials: {
+          title: "Client Stories",
+          subtitle: "What people say about working with Nova Digital Studio.",
+          1: "“Nova transformed our online presence. Their mix of design and technical SEO is unmatched.”",
+          2: "“The Python tutorials helped our marketing team automate internal reports. Great educational content.”",
+          3: "“We partnered for social media management; engagement doubled in three months. Highly professional.”"
+        },
+        cta: {
+          title: "Let's work together to build your digital presence.",
+          subtitle: "Contact Nova Digital Studio for design, web development, applications or social media services.",
+          startProject: "Start a Project",
+          contact: "Contact Nova"
+        },
+        blog: {
+          eyebrow: "Educational Articles",
+          title: "Nova Digital Studio Blog",
+          subtitle: "The blog shares useful articles about technology, design, programming, artificial intelligence and digital marketing.",
+          tagAI: "Artificial Intelligence",
+          post1Title: "What is Artificial Intelligence?",
+          post1Desc: "Discover the basics of AI, how it works and why it matters.",
+          tagPython: "Programming",
+          post2Title: "Python for Beginners",
+          post2Desc: "Start learning Python with simple concepts and examples.",
+          tagTools: "Tools",
+          post3Title: "Best AI Tools for Students",
+          post3Desc: "Free AI tools that boost productivity and learning.",
+          tagMarketing: "Marketing",
+          post4Title: "Introduction to Digital Marketing",
+          post4Desc: "Learn the foundation of digital marketing and audience growth.",
+          tagSEO: "SEO",
+          post5Title: "SEO Basics",
+          post5Desc: "Understand how search engines work and improve visibility.",
+          readMore: "Read More"
+        },
+        about: {
+          eyebrow: "About The Brand",
+          title: "About Nova Digital Studio",
+          p1: "Nova Digital Studio is a digital brand focused on helping entrepreneurs and beginners understand and use digital technologies.",
+          p2: "We combine digital services and educational content to make technology easier to learn and use.",
+          whyTitle: "Why Nova?",
+          whyText: "We believe digital transformation should be accessible, practical and creative. Our goal is to support both businesses and learners with clear solutions.",
+          mission: "Mission",
+          missionText: "Make digital knowledge accessible and help businesses grow online.",
+          vision: "Vision",
+          visionText: "Build a strong digital brand that combines services, education and innovation.",
+          notice: "Nova Digital Studio: services + education for the digital age."
+        },
+        contact: {
+          eyebrow: "Let's Collaborate",
+          title: "Work With Us",
+          subtitle: "If you need help with design, web development, applications or social media management, Nova Digital Studio is ready to help.",
+          formTitle: "Project Inquiry",
+          name: "Full name",
+          email: "Email",
+          service: "Service needed",
+          select: "Select",
+          web: "Web Development",
+          graphic: "Graphic Design",
+          social: "Social Media",
+          mobile: "Mobile App",
+          other: "Other",
+          budget: "Budget range",
+          budget1: "Less than €2k",
+          budget2: "€2k – €5k",
+          budget3: "€5k – €10k",
+          budget4: "€10k+",
+          message: "Message",
+          submit: "Submit inquiry",
+          notice: "We will respond within 24h.",
+          collabTitle: "Contact us to collaborate",
+          collabText: "Contact us to collaborate, build projects together, or grow your digital presence.",
+          emailTitle: "Email Contact",
+          socialTitle: "Social Media Links",
+          socialText: "Follow Nova Digital Studio."
+        },
+        footer: {
+          tagline: "Design • Web Development • Social Media • Digital Education",
+          quickLinks: "Quick Links",
+          connect: "Connect",
+          rights: "All rights reserved."
+        }
+      },
+      fr: {
+        nav: { home: "Accueil", blog: "Blog", about: "À propos", contact: "Contact" },
+        home: {
+          eyebrow: "Studio Digital • Tech Créative • Éducation",
+          subtitle: "Aider les entrepreneurs, startups et débutants à grandir dans le monde numérique.",
+          desc1: "Nova Digital Studio accompagne les PME et entrepreneurs dans la création de visuels, sites web, applications et dans la gestion des réseaux sociaux.",
+          desc2: "De plus, nous partageons du contenu éducatif sur Python, l'intelligence artificielle, le design, le marketing digital et le SEO pour aider les débutants à apprendre pas à pas.",
+          exploreBlog: "Explorer le blog",
+          contactUs: "Contactez-nous",
+          mini1Title: "Services créatifs",
+          mini1Text: "Design, web, applications, réseaux sociaux & branding",
+          mini2Title: "Éducation numérique",
+          mini2Text: "Python, IA, marketing, SEO – pour débutants",
+          snapshotTitle: "Aperçu du studio",
+          coreServices: "Services principaux",
+          learningTopics: "Sujets d'apprentissage",
+          soon: "Bientôt",
+          aiSeries: "Lancement série IA",
+          focusTitle: "Domaines clés",
+          focus1: "Sites web et applications modernes",
+          focus2: "Croissance sur les réseaux sociaux",
+          focus3: "Apprentissage pour débutants",
+          logoTitle: "Notre logo",
+          logoDesc: "Une identité visuelle propre conçue pour refléter l'innovation, la simplicité et la créativité numérique.",
+          logoText: "Ceci est votre logo officiel intégré directement dans le site."
+        },
+        services: {
+          title: "Nos Services",
+          subtitle: "Solutions créatives et techniques adaptées aux entrepreneurs, startups et entreprises en croissance.",
+          graphic: "Design graphique",
+          graphicDesc: "Design visuel percutant pour les entreprises et campagnes.",
+          web: "Développement web",
+          webDesc: "Sites web modernes et responsifs, performants et faciles à utiliser.",
+          mobile: "Développement d'applications mobiles",
+          mobileDesc: "Expériences mobiles centrées sur l'utilisateur.",
+          social: "Gestion des réseaux sociaux",
+          socialDesc: "Planification stratégique, soutien au contenu et croissance de la communauté.",
+          content: "Création de contenu digital",
+          contentDesc: "Contenu éducatif et marketing conçu pour engager.",
+          branding: "Support branding",
+          brandingDesc: "Identité visuelle et direction de marque pour un look professionnel."
+        },
+        edu: {
+          title: "Ce que nous partageons",
+          subtitle: "Nous partageons du contenu éducatif simple et utile pour aider les débutants à gagner en confiance dans la technologie et les compétences numériques.",
+          python: "Python pour débutants",
+          pythonDesc: "Introductions conviviales aux bases de la programmation.",
+          guides: "Mini guides d'apprentissage",
+          guidesDesc: "Ressources éducatives claires et structurées.",
+          ai: "IA pour débutants",
+          aiDesc: "Explications simples des concepts et outils d'IA.",
+          marketing: "Conseils en marketing digital",
+          marketingDesc: "Conseils pratiques pour la stratégie de contenu et la croissance de l'audience.",
+          seo: "SEO et croissance en ligne",
+          seoDesc: "Stratégies pour débutants pour améliorer la visibilité.",
+          aiSeries: "Série IA bientôt disponible",
+          aiSeriesDesc: "Nouvelle série éducative sur l'IA pour débutants – étape par étape."
+        },
+        portfolio: {
+          title: "Projets récents",
+          subtitle: "Une sélection de travaux représentant la qualité et la créativité de Nova Digital Studio."
+        },
+        pricing: {
+          title: "Forfaits flexibles",
+          subtitle: "Choisissez le plan qui correspond à vos besoins (prix en dinars tunisiens).",
+          essentials: "Essentiel",
+          essentials1: "Identité de marque et logo",
+          essentials2: "Site web 5 pages",
+          essentials3: "Configuration réseaux sociaux",
+          essentials4: "1 mois de support",
+          getStarted: "Commencer",
+          popular: "populaire",
+          growth1: "Tout l'essentiel",
+          growth2: "Développement d'application web",
+          growth3: "Optimisation SEO",
+          growth4: "3 mois de support",
+          chooseGrowth: "Choisir Croissance",
+          enterprise: "Entreprise",
+          custom: "Sur devis",
+          enterprise1: "Solutions sur mesure",
+          enterprise2: "Équipe dédiée",
+          enterprise3: "Intégration IA avancée",
+          enterprise4: "Stratégie continue",
+          contactUs: "Contactez-nous"
+        },
+        testimonials: {
+          title: "Témoignages clients",
+          subtitle: "Ce que les gens disent de leur collaboration avec Nova Digital Studio.",
+          1: "« Nova a transformé notre présence en ligne. Leur combinaison de design et de SEO technique est incomparable. »",
+          2: "« Les tutoriels Python ont aidé notre équipe marketing à automatiser des rapports internes. Excellent contenu éducatif. »",
+          3: "« Nous avons collaboré pour la gestion des réseaux sociaux ; l'engagement a doublé en trois mois. Très professionnel. »"
+        },
+        cta: {
+          title: "Travaillons ensemble pour construire votre présence numérique.",
+          subtitle: "Contactez Nova Digital Studio pour le design, le développement web, les applications ou les services de médias sociaux.",
+          startProject: "Démarrer un projet",
+          contact: "Contacter Nova"
+        },
+        blog: {
+          eyebrow: "Articles éducatifs",
+          title: "Blog Nova Digital Studio",
+          subtitle: "Le blog partage des articles utiles sur la technologie, le design, la programmation, l'intelligence artificielle et le marketing digital.",
+          tagAI: "Intelligence Artificielle",
+          post1Title: "Qu'est-ce que l'IA ?",
+          post1Desc: "Découvrez les bases de l'IA, son fonctionnement et pourquoi elle est importante.",
+          tagPython: "Programmation",
+          post2Title: "Python pour débutants",
+          post2Desc: "Apprenez Python avec des concepts simples et des exemples.",
+          tagTools: "Outils",
+          post3Title: "Meilleurs outils IA pour étudiants",
+          post3Desc: "Outils IA gratuits pour booster la productivité et l'apprentissage.",
+          tagMarketing: "Marketing",
+          post4Title: "Introduction au marketing digital",
+          post4Desc: "Apprenez les bases du marketing digital et de la croissance d'audience.",
+          tagSEO: "SEO",
+          post5Title: "Bases du SEO",
+          post5Desc: "Comprenez le fonctionnement des moteurs de recherche et améliorez votre visibilité.",
+          readMore: "Lire la suite"
+        },
+        about: {
+          eyebrow: "À propos de la marque",
+          title: "À propos de Nova Digital Studio",
+          p1: "Nova Digital Studio est une marque numérique dédiée à aider les entrepreneurs et les débutants à comprendre et utiliser les technologies numériques.",
+          p2: "Nous combinons services numériques et contenu éducatif pour rendre la technologie plus facile à apprendre et à utiliser.",
+          whyTitle: "Pourquoi Nova ?",
+          whyText: "Nous croyons que la transformation numérique doit être accessible, pratique et créative. Notre objectif est de soutenir à la fois les entreprises et les apprenants avec des solutions claires.",
+          mission: "Mission",
+          missionText: "Rendre les connaissances numériques accessibles et aider les entreprises à se développer en ligne.",
+          vision: "Vision",
+          visionText: "Construire une marque numérique forte qui combine services, éducation et innovation.",
+          notice: "Nova Digital Studio : services + éducation pour l'ère numérique."
+        },
+        contact: {
+          eyebrow: "Collaborons",
+          title: "Travaillez avec nous",
+          subtitle: "Si vous avez besoin d'aide pour le design, le développement web, les applications ou la gestion des réseaux sociaux, Nova Digital Studio est prêt à vous aider.",
+          formTitle: "Demande de projet",
+          name: "Nom complet",
+          email: "Email",
+          service: "Service requis",
+          select: "Sélectionner",
+          web: "Développement web",
+          graphic: "Design graphique",
+          social: "Réseaux sociaux",
+          mobile: "Application mobile",
+          other: "Autre",
+          budget: "Budget",
+          budget1: "Moins de 2000 DT",
+          budget2: "2000 DT – 5000 DT",
+          budget3: "5000 DT – 10000 DT",
+          budget4: "10000 DT+",
+          message: "Message",
+          submit: "Envoyer la demande",
+          notice: "Nous vous répondrons sous 24h.",
+          collabTitle: "Contactez-nous pour collaborer",
+          collabText: "Contactez-nous pour collaborer, construire des projets ensemble ou développer votre présence numérique.",
+          emailTitle: "Contact email",
+          socialTitle: "Liens réseaux sociaux",
+          socialText: "Suivez Nova Digital Studio."
+        },
+        footer: {
+          tagline: "Design • Développement web • Médias sociaux • Éducation numérique",
+          quickLinks: "Liens rapides",
+          connect: "Connecter",
+          rights: "Tous droits réservés."
+        }
+      }
+    };
+
+    // Language handling
+    let currentLang = localStorage.getItem('novaLang') || 'en';
+
+    function setLanguage(lang) {
+      currentLang = lang;
+      localStorage.setItem('novaLang', lang);
+
+      // Update all elements with data-i18n attribute
+      document.querySelectorAll('[data-i18n]').forEach(el => {
+        const keys = el.getAttribute('data-i18n').split('.');
+        let value = translations[lang];
+        keys.forEach(key => {
+          if (value) value = value[key];
+        });
+        if (value) {
+          if (el.tagName === 'INPUT' || el.tagName === 'TEXTAREA' || el.tagName === 'SELECT') {
+            el.placeholder = value;
+          } else {
+            el.innerHTML = value;
+          }
+        }
+      });
+
+      // Update select options
+      document.querySelectorAll('select option[data-i18n]').forEach(opt => {
+        const keys = opt.getAttribute('data-i18n').split('.');
+        let value = translations[lang];
+        keys.forEach(key => {
+          if (value) value = value[key];
+        });
+        if (value) opt.textContent = value;
+      });
+
+      // Update lang buttons active state
+      document.querySelectorAll('.lang-btn').forEach(btn => {
+        btn.classList.toggle('active', btn.dataset.lang === lang);
+      });
+    }
+
+    document.querySelectorAll('.lang-btn').forEach(btn => {
+      btn.addEventListener('click', () => {
+        setLanguage(btn.dataset.lang);
+      });
+    });
+
+    // Page switching
     const pages = document.querySelectorAll('.page');
     const navTriggers = document.querySelectorAll('.nav-trigger');
     const navLinks = document.getElementById('navLinks');
@@ -1197,21 +1634,10 @@
       const hash = window.location.hash.replace('#', '') || 'home';
       showPage(hash);
       if (yearSpan) yearSpan.textContent = new Date().getFullYear();
+      setLanguage(currentLang);
     });
 
-    const form = document.getElementById('contactForm');
-    if (form) {
-      const notice = document.getElementById('formNotice');
-      form.addEventListener('submit', (e) => {
-        e.preventDefault();
-        notice.style.display = 'block';
-        form.reset();
-        setTimeout(() => {
-          notice.style.display = 'none';
-        }, 5000);
-      });
-    }
-
+    // Scroll reveal
     const revealItems = document.querySelectorAll('.scroll-reveal');
     const revealOnScroll = () => {
       revealItems.forEach(item => {
@@ -1221,10 +1647,12 @@
         }
       });
     };
-
     window.addEventListener('scroll', revealOnScroll);
     window.addEventListener('load', revealOnScroll);
     revealOnScroll();
+
+    // Form handling (just prevent default for demo, but actual Formspree will handle)
+    // We keep the form as is (action points to Formspree)
   </script>
 </body>
 </html>
