@@ -110,6 +110,12 @@
       border-radius: 12px;
       background: rgba(255,255,255,0.04);
       padding: 4px;
+      transition: transform 0.3s ease;
+    }
+
+    .nav-logo:hover {
+      transform: scale(1.05);
+      filter: drop-shadow(0 0 8px var(--primary));
     }
 
     .hero-logo {
@@ -117,6 +123,12 @@
       height: auto;
       object-fit: contain;
       margin-bottom: 1rem;
+      transition: transform 0.3s ease;
+    }
+
+    .hero-logo:hover {
+      transform: scale(1.02);
+      filter: drop-shadow(0 0 12px var(--primary));
     }
 
     .showcase-logo {
@@ -124,6 +136,12 @@
       width: 100%;
       height: auto;
       object-fit: contain;
+      transition: all 0.3s ease;
+    }
+
+    .showcase-logo:hover {
+      transform: scale(1.02);
+      filter: drop-shadow(0 0 15px var(--primary));
     }
 
     .brand small {
@@ -461,12 +479,33 @@
         radial-gradient(circle at 30% 30%, rgba(96, 165, 250, 0.5), transparent 22%),
         radial-gradient(circle at 70% 70%, rgba(14, 165, 233, 0.3), transparent 20%),
         linear-gradient(135deg, rgba(59, 130, 246, 0.18), rgba(2, 6, 23, 0.65));
-      display: grid;
-      place-items: center;
+      display: flex;
+      align-items: center;
+      justify-content: center;
       border: 1px solid rgba(96, 165, 250, 0.18);
       position: relative;
       overflow: hidden;
       padding: 2rem;
+      transition: all 0.3s ease;
+    }
+
+    .logo-art:hover {
+      border-color: var(--primary);
+      box-shadow: 0 0 30px rgba(59, 130, 246, 0.3);
+    }
+
+    .logo-art::before {
+      content: '';
+      position: absolute;
+      width: 150%;
+      height: 150%;
+      background: radial-gradient(circle, rgba(59, 130, 246, 0.2) 0%, transparent 70%);
+      animation: rotate 20s linear infinite;
+    }
+
+    @keyframes rotate {
+      from { transform: rotate(0deg); }
+      to { transform: rotate(360deg); }
     }
 
     .bullet-list {
@@ -891,7 +930,7 @@
                 </p>
               </div>
               <p class="lead" data-i18n="home.logoText">
-                This is your official brand logo integrated directly into the website.
+                Your official brand logo, beautifully integrated with a modern design.
               </p>
             </div>
             <div class="logo-art" aria-label="Nova Digital Studio logo preview">
@@ -945,39 +984,37 @@
           </div>
         </div>
 
+        <!-- Pricing section without prices -->
         <div class="section">
           <div class="section-header">
             <h2 data-i18n="pricing.title">Flexible Packages</h2>
-            <p class="section-intro" data-i18n="pricing.subtitle">Choose the plan that fits your project needs (prix en dinars tunisiens).</p>
+            <p class="section-intro" data-i18n="pricing.subtitle">Choose the plan that fits your project needs. Contact us for a personalized quote.</p>
           </div>
           <div class="grid pricing-grid scroll-reveal">
             <div class="pricing-card">
               <h3 data-i18n="pricing.essentials">Essentials</h3>
-              <div class="price">5 000 DT</div>
               <ul class="price-features">
                 <li><i class="fas fa-check-circle"></i> <span data-i18n="pricing.essentials1">Brand identity & logo</span></li>
                 <li><i class="fas fa-check-circle"></i> <span data-i18n="pricing.essentials2">5-page website</span></li>
                 <li><i class="fas fa-check-circle"></i> <span data-i18n="pricing.essentials3">Social media setup</span></li>
                 <li><i class="fas fa-check-circle"></i> <span data-i18n="pricing.essentials4">1 month support</span></li>
               </ul>
-              <a href="#contact" class="btn btn-secondary nav-trigger" data-page="contact" data-i18n="pricing.getStarted">Get Started</a>
+              <a href="#contact" class="btn btn-secondary nav-trigger" data-page="contact" data-i18n="pricing.contactUs">Contact us</a>
             </div>
 
             <div class="pricing-card" style="border-color: var(--primary); transform: scale(1.02);">
               <h3>Growth <span style="color:var(--primary); font-size:0.8rem;" data-i18n="pricing.popular">popular</span></h3>
-              <div class="price">13 000 DT</div>
               <ul class="price-features">
                 <li><i class="fas fa-check-circle"></i> <span data-i18n="pricing.growth1">Everything in Essentials</span></li>
                 <li><i class="fas fa-check-circle"></i> <span data-i18n="pricing.growth2">Web app development</span></li>
                 <li><i class="fas fa-check-circle"></i> <span data-i18n="pricing.growth3">SEO optimization</span></li>
                 <li><i class="fas fa-check-circle"></i> <span data-i18n="pricing.growth4">3 months support</span></li>
               </ul>
-              <a href="#contact" class="btn btn-primary nav-trigger" data-page="contact" data-i18n="pricing.chooseGrowth">Choose Growth</a>
+              <a href="#contact" class="btn btn-primary nav-trigger" data-page="contact" data-i18n="pricing.contactUs">Contact us</a>
             </div>
 
             <div class="pricing-card">
               <h3 data-i18n="pricing.enterprise">Enterprise</h3>
-              <div class="price" data-i18n="pricing.custom">Sur devis</div>
               <ul class="price-features">
                 <li><i class="fas fa-check-circle"></i> <span data-i18n="pricing.enterprise1">Tailored solutions</span></li>
                 <li><i class="fas fa-check-circle"></i> <span data-i18n="pricing.enterprise2">Dedicated team</span></li>
@@ -1238,7 +1275,7 @@
           focus3: "Beginner-friendly learning",
           logoTitle: "Our Brand Logo",
           logoDesc: "A clean visual identity designed to reflect innovation, simplicity and digital creativity.",
-          logoText: "This is your official brand logo integrated directly into the website."
+          logoText: "Your official brand logo, beautifully integrated with a modern design."
         },
         services: {
           title: "Our Services",
@@ -1278,21 +1315,18 @@
         },
         pricing: {
           title: "Flexible Packages",
-          subtitle: "Choose the plan that fits your project needs (prices in Tunisian Dinars).",
+          subtitle: "Choose the plan that fits your project needs. Contact us for a personalized quote.",
           essentials: "Essentials",
           essentials1: "Brand identity & logo",
           essentials2: "5-page website",
           essentials3: "Social media setup",
           essentials4: "1 month support",
-          getStarted: "Get Started",
           popular: "popular",
           growth1: "Everything in Essentials",
           growth2: "Web app development",
           growth3: "SEO optimization",
           growth4: "3 months support",
-          chooseGrowth: "Choose Growth",
           enterprise: "Enterprise",
-          custom: "Custom",
           enterprise1: "Tailored solutions",
           enterprise2: "Dedicated team",
           enterprise3: "Advanced AI integration",
@@ -1405,7 +1439,7 @@
           focus3: "Apprentissage pour débutants",
           logoTitle: "Notre logo",
           logoDesc: "Une identité visuelle propre conçue pour refléter l'innovation, la simplicité et la créativité numérique.",
-          logoText: "Ceci est votre logo officiel intégré directement dans le site."
+          logoText: "Votre logo officiel, magnifiquement intégré avec un design moderne."
         },
         services: {
           title: "Nos Services",
@@ -1445,21 +1479,18 @@
         },
         pricing: {
           title: "Forfaits flexibles",
-          subtitle: "Choisissez le plan qui correspond à vos besoins (prix en dinars tunisiens).",
+          subtitle: "Choisissez le plan qui correspond à vos besoins. Contactez-nous pour un devis personnalisé.",
           essentials: "Essentiel",
           essentials1: "Identité de marque et logo",
           essentials2: "Site web 5 pages",
           essentials3: "Configuration réseaux sociaux",
           essentials4: "1 mois de support",
-          getStarted: "Commencer",
           popular: "populaire",
           growth1: "Tout l'essentiel",
           growth2: "Développement d'application web",
           growth3: "Optimisation SEO",
           growth4: "3 mois de support",
-          chooseGrowth: "Choisir Croissance",
           enterprise: "Entreprise",
-          custom: "Sur devis",
           enterprise1: "Solutions sur mesure",
           enterprise2: "Équipe dédiée",
           enterprise3: "Intégration IA avancée",
@@ -1650,9 +1681,6 @@
     window.addEventListener('scroll', revealOnScroll);
     window.addEventListener('load', revealOnScroll);
     revealOnScroll();
-
-    // Form handling (just prevent default for demo, but actual Formspree will handle)
-    // We keep the form as is (action points to Formspree)
   </script>
 </body>
 </html>
