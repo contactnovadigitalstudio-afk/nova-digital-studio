@@ -4,7 +4,6 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Nova Digital Studio | Innovation & Education</title>
-  <!-- Font Awesome for icons (consistent with both designs) -->
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" />
   <style>
     :root {
@@ -57,6 +56,8 @@
     .container {
       width: min(100% - 2rem, var(--max-width));
       margin: 0 auto;
+      position: relative;
+      z-index: 1;
     }
 
     .page {
@@ -90,6 +91,7 @@
       justify-content: space-between;
       gap: 1rem;
       padding: 1rem 0;
+      position: relative;
     }
 
     .brand {
@@ -107,6 +109,20 @@
       border-radius: 12px;
       background: rgba(255,255,255,0.04);
       padding: 4px;
+    }
+
+    .hero-logo {
+      width: 120px;
+      height: auto;
+      object-fit: contain;
+      margin-bottom: 1rem;
+    }
+
+    .showcase-logo {
+      max-width: 220px;
+      width: 100%;
+      height: auto;
+      object-fit: contain;
     }
 
     .brand small {
@@ -178,7 +194,6 @@
       transform: translateY(0);
     }
 
-    /* Hero section */
     .hero {
       display: grid;
       grid-template-columns: 1.2fr 0.8fr;
@@ -213,7 +228,7 @@
       margin-bottom: 1.25rem;
     }
 
-    .lead, .section-intro, .card p, .blog-card p, .footer-text {
+    .lead, .section-intro, .card p, .blog-card p, .footer-text, .info-card p {
       color: var(--muted);
     }
 
@@ -271,7 +286,8 @@
     .mission-vision,
     .logo-showcase,
     .gallery-item,
-    .pricing-card {
+    .pricing-card,
+    .testimonial-item {
       background: var(--card);
       border: 1px solid var(--card-border);
       border-radius: var(--radius);
@@ -344,7 +360,6 @@
       margin-bottom: 0.2rem;
     }
 
-    /* Section styles */
     .section {
       padding: 2rem 0;
     }
@@ -373,9 +388,6 @@
     .card, .pricing-card, .testimonial-item, .blog-card {
       padding: 1.35rem;
       transition: 0.25s ease;
-      background: var(--card);
-      border: 1px solid var(--card-border);
-      border-radius: var(--radius);
     }
 
     .card:hover, .pricing-card:hover, .testimonial-item:hover, .blog-card:hover {
@@ -396,9 +408,11 @@
       color: var(--primary-2);
     }
 
-    .card h3, .pricing-card h3, .blog-card h3 { margin-bottom: 0.65rem; font-size: 1.3rem; }
+    .card h3, .pricing-card h3, .blog-card h3 { 
+      margin-bottom: 0.65rem; 
+      font-size: 1.3rem; 
+    }
 
-    /* logo showcase */
     .logo-showcase {
       padding: 2rem;
       display: grid;
@@ -419,24 +433,9 @@
       border: 1px solid rgba(96, 165, 250, 0.18);
       position: relative;
       overflow: hidden;
+      padding: 2rem;
     }
 
-    .logo-mark {
-      width: 140px;
-      height: 140px;
-      border-radius: 36px;
-      display: grid;
-      place-items: center;
-      font-size: 3.4rem;
-      font-weight: 800;
-      color: var(--white);
-      background: linear-gradient(135deg, var(--primary), var(--accent));
-      box-shadow: 0 18px 40px rgba(59, 130, 246, 0.28);
-      position: relative;
-      z-index: 1;
-    }
-
-    /* bullet list */
     .bullet-list {
       list-style: none;
       display: grid;
@@ -460,7 +459,6 @@
       flex-shrink: 0;
     }
 
-    /* gallery items for portfolio */
     .gallery-item {
       min-height: 240px;
       border-radius: 20px;
@@ -484,11 +482,11 @@
       font-weight: 600;
     }
 
-    /* pricing features */
     .price-features {
       list-style: none;
       margin: 1rem 0;
     }
+
     .price-features li { margin: 0.5rem 0; }
     .price-features i { color: var(--primary); width: 24px; }
 
@@ -499,22 +497,24 @@
       margin: 0.8rem 0;
     }
 
-    /* testimonials */
     .testimonial-item {
       padding: 1.5rem;
     }
+
     .testimonial-item .quote-icon {
       font-size: 2rem;
       color: var(--primary);
       opacity: 0.3;
       margin-bottom: 0.5rem;
     }
+
     .client-info {
       display: flex;
       align-items: center;
       gap: 1rem;
       margin-top: 1rem;
     }
+
     .client-info img {
       width: 50px;
       height: 50px;
@@ -523,7 +523,6 @@
       background: #222;
     }
 
-    /* blog */
     .blog-image {
       height: 180px;
       background-size: cover;
@@ -531,6 +530,7 @@
       border-radius: 16px;
       margin-bottom: 1rem;
     }
+
     .blog-tag {
       color: var(--primary-2);
       font-size: 0.8rem;
@@ -538,18 +538,24 @@
       text-transform: uppercase;
     }
 
-    /* about layout */
     .about-layout {
       display: grid;
       grid-template-columns: 1.1fr 0.9fr;
       gap: 1.4rem;
       align-items: start;
     }
+
+    .about-copy {
+      display: grid;
+      gap: 1rem;
+    }
+
     .mission-vision {
       padding: 1.4rem;
       display: grid;
       gap: 1rem;
     }
+
     .notice {
       padding: 1rem;
       border-radius: 16px;
@@ -558,23 +564,31 @@
       color: #cde9ff;
     }
 
-    /* contact layout */
     .contact-layout {
       display: grid;
       grid-template-columns: 1.1fr 0.9fr;
       gap: 1.4rem;
     }
+
     .contact-form, .info-card {
       padding: 1.5rem;
     }
+
+    .info-stack {
+      display: grid;
+      gap: 1rem;
+    }
+
     .form-group {
       margin-bottom: 1rem;
     }
+
     .form-group label {
       display: block;
       font-weight: 600;
       margin-bottom: 0.3rem;
     }
+
     input, select, textarea {
       width: 100%;
       padding: 0.95rem 1rem;
@@ -585,11 +599,16 @@
       outline: none;
       font-family: inherit;
     }
+
     input:focus, select:focus, textarea:focus {
       border-color: rgba(96, 165, 250, 0.55);
       box-shadow: 0 0 0 4px rgba(59, 130, 246, 0.12);
     }
-    textarea { min-height: 120px; resize: vertical; }
+
+    textarea { 
+      min-height: 120px; 
+      resize: vertical; 
+    }
 
     .socials, .footer-socials {
       display: flex;
@@ -597,6 +616,7 @@
       gap: 0.7rem;
       margin-top: 0.7rem;
     }
+
     .socials a, .footer-socials a {
       width: 42px;
       height: 42px;
@@ -608,27 +628,43 @@
       color: var(--white);
       transition: 0.25s ease;
     }
+
     .socials a:hover, .footer-socials a:hover {
       transform: translateY(-2px);
       background: rgba(59, 130, 246, 0.18);
     }
 
-    /* footer */
     .footer {
       border-top: 1px solid rgba(96, 165, 250, 0.12);
       padding: 2rem 0;
       background: rgba(4, 10, 20, 0.5);
     }
+
     .footer-grid {
       display: grid;
       grid-template-columns: 1.2fr 0.8fr 0.8fr;
       gap: 1.5rem;
       align-items: start;
     }
-    .footer h4 { margin-bottom: 0.9rem; }
-    .footer-links { list-style: none; display: grid; gap: 0.7rem; }
-    .footer-links a { color: var(--muted); }
-    .footer-links a:hover { color: var(--white); }
+
+    .footer h4 { 
+      margin-bottom: 0.9rem; 
+    }
+
+    .footer-links { 
+      list-style: none; 
+      display: grid; 
+      gap: 0.7rem; 
+    }
+
+    .footer-links a { 
+      color: var(--muted); 
+    }
+
+    .footer-links a:hover { 
+      color: var(--white); 
+    }
+
     .copyright {
       margin-top: 1.5rem;
       padding-top: 1rem;
@@ -658,6 +694,7 @@
       .dashboard-top, .dashboard-grid {
         grid-template-columns: 1fr;
       }
+
       .services-grid, .portfolio-gallery, .pricing-grid, .testimonials-grid, .blog-grid {
         grid-template-columns: repeat(2, minmax(0, 1fr));
       }
@@ -667,6 +704,7 @@
       .menu-toggle {
         display: inline-flex;
       }
+
       .nav-links {
         position: absolute;
         top: calc(100% + 0.75rem);
@@ -681,21 +719,30 @@
         align-items: stretch;
         box-shadow: var(--shadow);
       }
+
       .nav-links.open {
         display: flex;
       }
+
       .nav-links a {
         width: 100%;
       }
+
       .services-grid, .portfolio-gallery, .pricing-grid, .testimonials-grid, .blog-grid {
         grid-template-columns: 1fr;
       }
+
       .cta-group {
         flex-direction: column;
         align-items: stretch;
       }
+
       .btn {
         width: 100%;
+      }
+
+      .form-row {
+        grid-template-columns: 1fr !important;
       }
     }
   </style>
@@ -707,8 +754,7 @@
   <header class="site-header">
     <div class="container nav-wrapper">
       <a href="#home" class="brand nav-trigger" data-page="home">
-        <!-- actual logo file (user's image) – replace with your own if needed -->
-        <img src="logo.jpeg" alt="Nova Digital Studio Logo" class="nav-logo" onerror="this.src='data:image/svg+xml,%3Csvg xmlns=\'http://www.w3.org/2000/svg\' width=\'180\' height=\'60\' viewBox=\'0 0 180 60\'%3E%3Crect width=\'180\' height=\'60\' rx=\'12\' fill=\'%231a2b3f\'/%3E%3Cpath d=\'M32 38 L38 22 L44 38 L41 38 L38 30 L35 38 L32 38Z\' fill=\'%23007aff\'/%3E%3Ctext x=\'58\' y=\'40\' font-family=\'Arial\' font-size=\'24\' font-weight=\'bold\' fill=\'%23ffffff\'%3ENOVA%3C/text%3E%3C/svg%3E';" />
+        <img src="logo.jpeg" alt="Nova Digital Studio Logo" class="nav-logo" />
         <div>
           Nova Digital Studio
           <small>Design • Web Development • Social Media • Digital Education</small>
@@ -729,14 +775,12 @@
   </header>
 
   <main>
-    <!-- HOME PAGE -->
     <section id="home" class="page active">
       <div class="container">
-        <!-- Hero section with dashboard -->
         <div class="hero scroll-reveal">
           <div>
             <div class="eyebrow">Digital Studio • Creative Tech • Education</div>
-            <img src="615837815_122099765169221014_6702683901027941889_n_06f10316e1.jpeg" alt="Nova Digital Studio Logo" style="width:120px; margin-bottom:1rem;" onerror="this.src='data:image/svg+xml,%3Csvg xmlns=\'http://www.w3.org/2000/svg\' width=\'400\' height=\'140\' viewBox=\'0 0 400 140\'%3E%3Crect width=\'400\' height=\'140\' rx=\'30\' fill=\'%231a2b3f\'/%3E%3Cpath d=\'M80 95 L95 50 L110 95 L102 95 L95 72 L88 95 L80 95Z\' fill=\'%23007aff\'/%3E%3Ctext x=\'140\' y=\'95\' font-family=\'Arial\' font-size=\'58\' font-weight=\'bold\' fill=\'%23ffffff\'%3ENOVA%3C/text%3E%3Ctext x=\'140\' y=\'125\' font-family=\'Arial\' font-size=\'24\' fill=\'%2390b0ff\'%3EDigital Studio%3C/text%3E%3C/svg%3E';" />
+            <img src="logo.jpeg" alt="Nova Digital Studio Logo" class="hero-logo" />
             <h1>Nova Digital Studio</h1>
             <h2>Helping entrepreneurs, startups and beginners grow in the digital world.</h2>
             <p class="lead">
@@ -785,7 +829,6 @@
           </div>
         </div>
 
-        <!-- Brand logo showcase -->
         <div class="section">
           <div class="logo-showcase scroll-reveal">
             <div>
@@ -796,16 +839,15 @@
                 </p>
               </div>
               <p class="lead">
-                This placeholder logo block can be replaced later with your official brand image.
+                This is your official brand logo integrated directly into the website.
               </p>
             </div>
             <div class="logo-art" aria-label="Nova Digital Studio logo preview">
-              <div class="logo-mark">N</div>
+              <img src="logo.jpeg" alt="Nova Digital Studio Logo" class="showcase-logo" />
             </div>
           </div>
         </div>
 
-        <!-- Services section (6 items) -->
         <div class="section">
           <div class="section-header">
             <h2>Our Services</h2>
@@ -821,7 +863,6 @@
           </div>
         </div>
 
-        <!-- Educational content section -->
         <div class="section">
           <div class="section-header">
             <h2>What We Share</h2>
@@ -837,7 +878,6 @@
           </div>
         </div>
 
-        <!-- Portfolio showcase (6 projects) -->
         <div class="section">
           <div class="section-header">
             <h2>Recent Projects</h2>
@@ -847,13 +887,12 @@
             <div class="gallery-item" data-title="Fintech Dashboard (Web Dev)" style="background-image: linear-gradient(rgba(4,11,22,0.18), rgba(4,11,22,0.35)), url('https://images.unsplash.com/photo-1460925895917-afdab827c52f?auto=format&fit=crop&w=900&q=80');"></div>
             <div class="gallery-item" data-title="EcoTracker App (Mobile)" style="background-image: linear-gradient(rgba(4,11,22,0.18), rgba(4,11,22,0.35)), url('https://images.unsplash.com/photo-1512941937669-90a1b58e7e9c?auto=format&fit=crop&w=900&q=80');"></div>
             <div class="gallery-item" data-title="Nova Brand Identity" style="background-image: linear-gradient(rgba(4,11,22,0.18), rgba(4,11,22,0.35)), url('https://images.unsplash.com/photo-1522542550221-31fd19575a2d?auto=format&fit=crop&w=900&q=80');"></div>
-            <div class="gallery-item" data-title="Urban Store (E‑commerce)" style="background-image: linear-gradient(rgba(4,11,22,0.18), rgba(4,11,22,0.35)), url('https://images.unsplash.com/photo-1551288049-bebda4e38f71?auto=format&fit=crop&w=900&q=80');"></div>
+            <div class="gallery-item" data-title="Urban Store (E-commerce)" style="background-image: linear-gradient(rgba(4,11,22,0.18), rgba(4,11,22,0.35)), url('https://images.unsplash.com/photo-1551288049-bebda4e38f71?auto=format&fit=crop&w=900&q=80');"></div>
             <div class="gallery-item" data-title="Chatbot Assistant (AI)" style="background-image: linear-gradient(rgba(4,11,22,0.18), rgba(4,11,22,0.35)), url('https://images.unsplash.com/photo-1674027444485-cec3da58eef4?auto=format&fit=crop&w=900&q=80');"></div>
             <div class="gallery-item" data-title="Analytics Suite (Data Viz)" style="background-image: linear-gradient(rgba(4,11,22,0.18), rgba(4,11,22,0.35)), url('https://images.unsplash.com/photo-1467232004584-a241de8bcf5d?auto=format&fit=crop&w=900&q=80');"></div>
           </div>
         </div>
 
-        <!-- Pricing packages -->
         <div class="section">
           <div class="section-header">
             <h2>Flexible Packages</h2>
@@ -865,12 +904,13 @@
               <div class="price">€1,499</div>
               <ul class="price-features">
                 <li><i class="fas fa-check-circle"></i> Brand identity & logo</li>
-                <li><i class="fas fa-check-circle"></i> 5‑page website</li>
+                <li><i class="fas fa-check-circle"></i> 5-page website</li>
                 <li><i class="fas fa-check-circle"></i> Social media setup</li>
                 <li><i class="fas fa-check-circle"></i> 1 month support</li>
               </ul>
               <a href="#contact" class="btn btn-secondary nav-trigger" data-page="contact">Get Started</a>
             </div>
+
             <div class="pricing-card" style="border-color: var(--primary); transform: scale(1.02);">
               <h3>Growth <span style="color:var(--primary); font-size:0.8rem;">popular</span></h3>
               <div class="price">€3,999</div>
@@ -882,6 +922,7 @@
               </ul>
               <a href="#contact" class="btn btn-primary nav-trigger" data-page="contact">Choose Growth</a>
             </div>
+
             <div class="pricing-card">
               <h3>Enterprise</h3>
               <div class="price">Custom</div>
@@ -896,7 +937,6 @@
           </div>
         </div>
 
-        <!-- Client testimonials -->
         <div class="section">
           <div class="section-header">
             <h2>Client Stories</h2>
@@ -930,7 +970,6 @@
           </div>
         </div>
 
-        <!-- Work With Us CTA -->
         <div class="section">
           <div class="card" style="padding:2rem; text-align:center;">
             <h2 style="margin-bottom:0.8rem;">Let's work together to build your digital presence.</h2>
@@ -946,7 +985,6 @@
       </div>
     </section>
 
-    <!-- BLOG PAGE -->
     <section id="blog" class="page">
       <div class="container">
         <div class="section-header">
@@ -963,6 +1001,7 @@
             <p>Discover the basics of AI, how it works and why it matters.</p>
             <a href="#" class="btn btn-secondary" style="margin-top:0.5rem;">Read More</a>
           </article>
+
           <article class="blog-card">
             <div class="blog-image" style="background-image: linear-gradient(rgba(4,11,22,0.2), rgba(4,11,22,0.35)), url('https://images.unsplash.com/photo-1526379095098-d400fd0bf935?auto=format&fit=crop&w=900&q=80');"></div>
             <span class="blog-tag">Programming</span>
@@ -970,6 +1009,7 @@
             <p>Start learning Python with simple concepts and examples.</p>
             <a href="#" class="btn btn-secondary" style="margin-top:0.5rem;">Read More</a>
           </article>
+
           <article class="blog-card">
             <div class="blog-image" style="background-image: linear-gradient(rgba(4,11,22,0.2), rgba(4,11,22,0.35)), url('https://images.unsplash.com/photo-1674027444485-cec3da58eef4?auto=format&fit=crop&w=900&q=80');"></div>
             <span class="blog-tag">Tools</span>
@@ -977,6 +1017,7 @@
             <p>Free AI tools that boost productivity and learning.</p>
             <a href="#" class="btn btn-secondary" style="margin-top:0.5rem;">Read More</a>
           </article>
+
           <article class="blog-card">
             <div class="blog-image" style="background-image: linear-gradient(rgba(4,11,22,0.2), rgba(4,11,22,0.35)), url('https://images.unsplash.com/photo-1460925895917-afdab827c52f?auto=format&fit=crop&w=900&q=80');"></div>
             <span class="blog-tag">Marketing</span>
@@ -984,6 +1025,7 @@
             <p>Learn the foundation of digital marketing and audience growth.</p>
             <a href="#" class="btn btn-secondary" style="margin-top:0.5rem;">Read More</a>
           </article>
+
           <article class="blog-card">
             <div class="blog-image" style="background-image: linear-gradient(rgba(4,11,22,0.2), rgba(4,11,22,0.35)), url('https://images.unsplash.com/photo-1562577309-4932fdd64cd1?auto=format&fit=crop&w=900&q=80');"></div>
             <span class="blog-tag">SEO</span>
@@ -995,7 +1037,6 @@
       </div>
     </section>
 
-    <!-- ABOUT PAGE -->
     <section id="about" class="page">
       <div class="container">
         <div class="section-header">
@@ -1018,11 +1059,10 @@
       </div>
     </section>
 
-    <!-- CONTACT PAGE with enhanced inquiry form -->
     <section id="contact" class="page">
       <div class="container">
         <div class="section-header">
-          <div class="eyebrow">Let’s Collaborate</div>
+          <div class="eyebrow">Let's Collaborate</div>
           <h2>Work With Us</h2>
           <p class="section-intro">If you need help with design, web development, applications or social media management, Nova Digital Studio is ready to help.</p>
         </div>
@@ -1033,6 +1073,7 @@
             <form id="contactForm">
               <div class="form-group"><label>Full name</label><input type="text" placeholder="Your name" required /></div>
               <div class="form-group"><label>Email</label><input type="email" placeholder="you@example.com" required /></div>
+
               <div class="form-row" style="display:grid; grid-template-columns:1fr 1fr; gap:1rem;">
                 <div class="form-group">
                   <label>Service needed</label>
@@ -1056,6 +1097,7 @@
                   </select>
                 </div>
               </div>
+
               <div class="form-group"><label>Message</label><textarea placeholder="Tell us about your project..." required></textarea></div>
               <button type="submit" class="btn btn-primary">Submit inquiry</button>
               <div class="notice" id="formNotice" style="display:none; margin-top:1rem;">Thank you! We'll get back to you within 24h.</div>
@@ -1085,10 +1127,11 @@
     <div class="container">
       <div class="footer-grid">
         <div>
-          <img src="615837815_122099765169221014_6702683901027941889_n_06f10316e1.jpeg" alt="Nova" class="nav-logo" style="margin-bottom:0.5rem;" onerror="this.style.display='none';" />
+          <img src="logo.jpeg" alt="Nova Digital Studio Logo" class="nav-logo" style="margin-bottom:0.5rem;" />
           <h4>Nova Digital Studio</h4>
           <p class="footer-text">Design • Web Development • Social Media • Digital Education</p>
         </div>
+
         <div>
           <h4>Quick Links</h4>
           <ul class="footer-links">
@@ -1098,15 +1141,17 @@
             <li><a href="#contact" class="nav-trigger" data-page="contact">Contact</a></li>
           </ul>
         </div>
+
         <div>
           <h4>Connect</h4>
           <div class="footer-socials">
-            <a href="#" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
+            <a href="https://www.instagram.com/contact.novadigitalstudio/" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
             <a href="#" aria-label="LinkedIn"><i class="fab fa-linkedin"></i></a>
             <a href="#" aria-label="Twitter"><i class="fab fa-x-twitter"></i></a>
           </div>
         </div>
       </div>
+
       <div class="copyright">© <span id="year"></span> Nova Digital Studio. All rights reserved.</div>
     </div>
   </footer>
@@ -1114,7 +1159,6 @@
   <a class="whatsapp-float" href="https://wa.me/0000000000" target="_blank" rel="noopener" aria-label="Contact on WhatsApp">✆</a>
 
   <script>
-    // Page switching and UI interactions
     const pages = document.querySelectorAll('.page');
     const navTriggers = document.querySelectorAll('.nav-trigger');
     const navLinks = document.getElementById('navLinks');
@@ -1125,9 +1169,11 @@
       pages.forEach(p => p.classList.remove('active'));
       const target = document.getElementById(pageId);
       if (target) target.classList.add('active');
+
       navTriggers.forEach(link => {
         link.classList.toggle('active-link', link.dataset.page === pageId);
       });
+
       window.scrollTo({ top: 0, behavior: 'smooth' });
       navLinks.classList.remove('open');
     }
@@ -1153,7 +1199,6 @@
       if (yearSpan) yearSpan.textContent = new Date().getFullYear();
     });
 
-    // Contact form handling
     const form = document.getElementById('contactForm');
     if (form) {
       const notice = document.getElementById('formNotice');
@@ -1161,18 +1206,22 @@
         e.preventDefault();
         notice.style.display = 'block';
         form.reset();
-        setTimeout(() => { notice.style.display = 'none'; }, 5000);
+        setTimeout(() => {
+          notice.style.display = 'none';
+        }, 5000);
       });
     }
 
-    // Scroll reveal
     const revealItems = document.querySelectorAll('.scroll-reveal');
     const revealOnScroll = () => {
       revealItems.forEach(item => {
         const rect = item.getBoundingClientRect();
-        if (rect.top < window.innerHeight - 80) item.classList.add('visible');
+        if (rect.top < window.innerHeight - 80) {
+          item.classList.add('visible');
+        }
       });
     };
+
     window.addEventListener('scroll', revealOnScroll);
     window.addEventListener('load', revealOnScroll);
     revealOnScroll();
